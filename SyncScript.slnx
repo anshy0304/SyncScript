@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SyncScript.ConsoleTest/SyncScript.ConsoleTest.csproj" Id="67a246c4-d573-4e60-a058-b292259e5c35" />
+  <Project Path="SyncScript.Core/SyncScript.Core.csproj" />
+</Solution>
