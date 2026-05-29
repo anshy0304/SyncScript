@@ -6,8 +6,8 @@ namespace SyncScript.Core
 {
     public enum OperationType
     {
-        INSERT,
-        DELETE
+        Insert,
+        Delete
     }
     public class CRDTOperation
     {

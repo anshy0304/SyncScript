@@ -22,6 +22,13 @@ namespace SyncScript.Core
                 {
                     throw new InvalidOperationException("Parent node not found");
                 }
+                var postion = parentListNode;
+                while(postion.Next != null && postion.Next.Value.ParentId  == node.ParentId
+                    && postion.Next.Value.Id.CompareTo(node.Id) < 0)
+                {
+                    postion = postion.Next;
+                }
+
                 var listNode = _nodes.AddAfter(parentListNode, node);
                     _index[node.Id] = listNode;
                 
@@ -33,6 +40,19 @@ namespace SyncScript.Core
             if(_index.TryGetValue(nodeId,out var listNode))
             {
                 listNode.Value.Tombstoned = true;
+            }
+        }
+
+        public void Apply(CRDTOperation operation)
+        {
+            switch (operation.Type)
+            {
+                case OperationType.Insert:
+                    Insert(operation.Node);
+                    break;
+                case OperationType.Delete:
+                    Delete(operation.Node.Id);
+                    break;
             }
         }
         public string GetText()
