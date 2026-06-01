@@ -50,7 +50,6 @@ namespace SyncScript.Core
                 case OperationType.Insert:
                     Insert(operation.Node);
                     break;
-                case OperationType.Delete:
                     Delete(operation.Node.Id);
                     break;
             }
